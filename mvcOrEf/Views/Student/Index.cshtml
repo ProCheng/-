@@ -1,0 +1,224 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/frame/layui2/css/layui.css" media="all">
+    <style>
+       
+         
+    </style>
+</head>
+<body>
+
+    <table id="demo" lay-filter="test"></table>
+
+    <script src="~/frame/layui2/layui.js"></script>
+    <script>
+        function fmtDate(obj) {
+            var dateVal = obj + "";
+            if (obj != null) {
+                var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
+                var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+                return date.getFullYear() + "-" + month + "-" + currentDate;// + " " + hours + ":" + minutes + ":" + seconds;
+            }
+        }
+        layui.use(['table', 'layer', 'upload'], function () {
+            var table = layui.table,
+                layer = layui.layer,
+                upload = layui.upload,
+                $ = layui.jquery;
+
+            //第一个实例
+            var tableIns = table.render({
+                elem: '#demo'
+                , height: 540
+                , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                , url: '/Student/getStudent/' //数据接口
+                , page: true //开启分页,
+                , limit: 10
+                , limits: [10, 20, 30]
+                , toolbar: "#Toptool"
+
+                , cols: [[ //表头
+                    { type: 'checkbox', fixed: 'left' }
+                    , { field: 'Id', title: '编号', align: "center", width: 80, style: "color: #f00;" }
+                    , { field: 'Name', title: '姓名', align: "center", width: 120 }
+                    , { field: 'Sex', title: '性别', align: "center", width: 80 }
+                    , { field: 'CardId', title: '身份证号码', align: "center" }
+                    , { field: 'Phone', title: '手机号码', align: "center" }
+                    , { field: 'Address', title: '家庭住址', align: "center" }
+                    , { field: 'EnrollmentDate', title: '入学时间', align: "center", templet: "#tem" }
+                    , { field: 'tool', title: '操作', align: "center", toolbar: "#tool" }
+                ]]
+            });
+
+
+            table.on('toolbar(test)', function (obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                    case 'add':
+                        layer.open({
+                            title: '添加',
+                            type: 2,
+                            content: '/student/addstudent',
+                            area: ["600px", "600px"],
+                            cancel: function () {
+                                tableIns.reload();
+                            }
+                        })
+                        break;
+                    case 'refresh':
+                        tableIns.reload();
+                        break;
+                    case 'batchdel':
+                        var id = [];
+                        $.each(checkStatus.data, function (index, item) {
+                            id.push(item['Id'])
+                        })
+                        $.ajax({
+                            type: 'post',
+                            url: '/student/DatchDelStudent',
+                            data: { id: id },
+                            success: function (data) {
+                                if (data.success) {
+                                    layer.msg(data.msg, { icon: 6 })
+                                    tableIns.reload();
+                                }
+                                else
+                                    layer.msg(data.msg, { icon: 5 })
+
+                            }
+                        })
+                        break;
+                    case 'query':
+                        var query = $('.query').val();
+                        var url = query.trim() == "" ? "/student/getstudent" : ('/student/queryStudent?query=' + query);
+                        tableIns.reload({
+                            url: url
+                        })
+                        break;
+                    case 'excelModel':
+                        window.location.href = "/student/excelModel"
+                        break;
+                    case 'export':
+                        $('#export').click();
+                        break;
+                    case 'import':
+                        window.location.href = "/student/infoExcel"
+                        break;
+                };
+            });
+
+            table.on('tool(test)', function (obj) {
+                var layEvent = obj.event
+                if (layEvent == 'edit') {
+                    layer.open({
+                        title: '修改',
+                        type: 2,
+                        content: '/student/editStudent?id=' + obj.data.Id,
+                        area: ["600px", "600px"],
+                        cancel: function () {
+                            tableIns.reload();
+                        }
+                    })
+                } else if (layEvent == 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        $.ajax({
+                            type: 'post',
+                            url: '/student/delstudent',
+                            data: { Id: obj.data.Id },
+                            success: function (res) {
+                                if (res.success) {
+                                    layer.msg(res.msg, { icon: 6 })
+                                    tableIns.reload();
+                                } else {
+                                    layer.msg(res.msg, { icon: 5 })
+                                }
+
+                            }
+                        })
+                    });
+                } else if (layEvent == 'Info') {
+                    layer.open({
+                        title: '信息',
+                        type: 2,
+                        content: '/student/InfoStudent?id=' + obj.data.Id,
+                        area: ["600px", "600px"],
+                    })
+                }
+            })
+
+            upload.render({
+                elem: '.export',
+                url: '/student/export',
+                done: function (res, index, upload) {
+                    layer.msg(res.msg)
+                    tableIns.reload()
+                },
+                error: function () {
+                    layer.msg('请求异常')
+                },
+                accept: 'file',
+                acceptMime: 'application/vnd.ms-excel',
+            })
+
+        });
+
+    </script>
+    <script id="tem" type="text/html">
+        {{fmtDate(d.EnrollmentDate)}}
+    </script>
+
+    <script id="tool" type="text/html">
+        <a class="layui-btn layui-btn-xs layui-bg-blue" lay-event="Info" id="Info">详细</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit" id="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    @*将按钮隐藏，这个是导入的按钮*@
+    <button class="layui-btn layui-btn-sm export" id="export" style="display:none">
+        <i class="layui-icon">&#xe62c;</i>
+        <span>导入</span>
+    </button>
+    <script type="text/html" id="Toptool">
+        <button class="layui-btn layui-btn-warm layui-btn-sm" lay-event="batchdel">
+            <i class="layui-icon">&#xe640;</i>
+        </button>
+        <button class="layui-btn layui-btn-sm" lay-event="add">
+            <i class="layui-icon">&#xe654;</i>
+        </button>
+        <button class="layui-btn layui-btn-sm" lay-event="refresh">
+            <i class="layui-icon">&#xe666;</i>
+        </button>
+        <div class="layui-input-inline">
+            <input type="text" name="search" placeholder="请搜索" autocomplete="off" class="layui-input query">
+        </div>
+        <button class="layui-btn layui-btn-sm" lay-event="query">
+            <i class="layui-icon">&#xe615;</i>
+        </button>
+        <button class="layui-btn layui-btn-sm export" lay-event="export">
+            <i class="layui-icon">&#xe62c;</i>
+            <span>导入</span>
+        </button>
+        <button class="layui-btn layui-btn-sm" lay-event="import">
+            <i class="layui-icon">&#xe62c;</i>
+            <span>导出</span>
+        </button>
+        <button class="layui-btn layui-btn-sm" lay-event="excelModel">
+            <i class="layui-icon">&#xe62c;</i>
+            <span>Excel模板下载</span>
+        </button>
+    </script>
+</body>
+</html>

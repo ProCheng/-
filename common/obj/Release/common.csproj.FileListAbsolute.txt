@@ -1,0 +1,15 @@
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\common.dll.config
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\common.dll
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\common.pdb
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\EntityFramework.dll
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\model.dll
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\model.pdb
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\model.dll.config
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\EntityFramework.xml
+C:\Users\cheng\Desktop\2020的web网站\common\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\cheng\Desktop\2020的web网站\common\obj\Release\common.csprojAssemblyReference.cache
+C:\Users\cheng\Desktop\2020的web网站\common\obj\Release\common.csproj.CoreCompileInputs.cache
+C:\Users\cheng\Desktop\2020的web网站\common\obj\Release\common.csproj.CopyComplete
+C:\Users\cheng\Desktop\2020的web网站\common\obj\Release\common.dll
+C:\Users\cheng\Desktop\2020的web网站\common\obj\Release\common.pdb

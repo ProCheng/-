@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园管理</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/login/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/login/login.css"/>
+</head>
+<body>
+    <!-- coidea:loader START -->
+    @*<div class="loader">
+        <div class="lds-ripple">
+            <div>3423434234</div>
+            <div></div>
+        </div>
+    </div>*@
+    <!-- coidea:loader END -->
+    <!-- coidea:header START -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <a href="http://www.baidu.com"><span>百度</span></a>
+            </div>
+            <nav class="navigation">
+                <li><a href="#"><span>Article</span></a></li>
+                <li><a href="#" target="_blank"><span>Github</span></a></li>
+                <li><a href="#"><span>个人信息</span></a></li>
+            </nav>
+        </div>
+    </header>
+    <!-- coidea:header END -->
+    <!-- COIDEA:modal START -->
+    <div class="modal invisible">
+
+        <!-- COIDEA:modal:monster (open-close) START -->
+        <div class="monster-open-close" style="background-image: url(/Content/image/m-open-close.png)"></div>
+        <!-- COIDEA:modal:monster (open-close) END -->
+        <!-- COIDEA:modal:inner START -->
+        <div class="modal-inner" style="background-image: url(/Content/image/landscape.png);">
+
+            <!-- COIDEA:modal:inner:close START -->
+            <p class="close"><span></span></p>
+            <!-- COIDEA:modal:inner:close END -->
+            <!-- COIDEA:modal:inner:body START -->
+            <div class="modal-body">
+
+                <!-- COIDEA:modal:inner:body:monster (close) START -->
+                <div class="monster-close" style="background-image: url(/Content/image/m-close.png)"><span>嗨咯</span></div>
+                <!-- COIDEA:modal:inner:body:monster (close) END -->
+
+                <h2>2020MVC项目</h2>
+
+                <ul>
+                    <li>注册</li>
+                    <li>登录</li>
+                </ul>
+
+                <!-- COIDEA:modal:inner:body:form START -->
+                <div class="form">
+                    <div class="form-holder">
+
+                        <div class="monster-signup"><span style="background-image: url(/Content/image/m-signup.png)"></span></div>
+
+                        <div class="form-holder-inner">
+                            <form>
+                                <div class="group">
+                                    <a href="javascript:;" id="login-zc" style="float:right;text-decoration:none;font-size:12px;padding:10px 10px 0px 0px;color:forestgreen"><span style="color:#4f4f4f">还没有账号</span>，赶紧注册吧</a>
+                                    <input type="text" name="Account" class="Account" id="email" placeholder="请输入账号" autocomplete="off" required>
+                                    <input type="password" name="Pwd" class="Pwd" id="email" placeholder="请输入密码" autocomplete="off" required>
+                                    <input type="text" name="Code" class="Code"  id="email" maxlength="6" placeholder="请输入验证码" autocomplete="off" required>
+                                    <img id="toggleCode" src="/GetCommon/checkingcodelogin" style="position:absolute;left:40%;bottom:10px" />
+                                    <input type="submit" class="submit-btn diy-btn-login" value="登录" disabled="disabled">
+                                </div>
+
+                                
+                            </form>
+                            <div class="thank-you-holder">
+                                <span id="login_show" style="position:absolute;top:70px;left:200px;font-size:30px">正在运行</span>
+                              
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- COIDEA:modal:inner:body:form END -->
+
+            </div>
+            <!-- COIDEA:modal:inner:body END -->
+
+        </div>
+        <!-- COIDEA:modal:inner END -->
+
+    </div>
+    <!-- COIDEA:modal END -->
+    <!-- COIDEA:trigger START -->
+    <section class="trigger">
+        <h1 style="overflow:hidden;white-space:nowrap;">欢迎来到校园管理页面</h1>
+        <button id="button" style="width:310px">登录</button>
+    </section>
+    <!-- COIDEA:trigger END -->
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/TweenMax.min.js"></script>
+    <script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Scripts/login/demo.js"></script>
+
+</body>
+</html>

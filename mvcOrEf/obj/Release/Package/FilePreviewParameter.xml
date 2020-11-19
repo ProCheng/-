@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="sksk" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\cheng\\Desktop\\2020的web网站\\mvcOrEf\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\cheng\\Desktop\\2020的web网站\\mvcOrEf\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="conn-Web.config Connection String" description="" value="server=127.0.0.1;database=2020MvcOrEf;uid=sa;pwd=2263666854" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\cheng\\Desktop\\2020的web网站\\mvcOrEf\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='conn']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,12 @@
+C:\Users\cheng\Desktop\2020的web网站\model\bin\Debug\model.dll.config
+C:\Users\cheng\Desktop\2020的web网站\model\bin\Debug\model.dll
+C:\Users\cheng\Desktop\2020的web网站\model\bin\Debug\model.pdb
+C:\Users\cheng\Desktop\2020的web网站\model\bin\Debug\EntityFramework.dll
+C:\Users\cheng\Desktop\2020的web网站\model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\cheng\Desktop\2020的web网站\model\bin\Debug\EntityFramework.xml
+C:\Users\cheng\Desktop\2020的web网站\model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\cheng\Desktop\2020的web网站\model\obj\Debug\model.csproj.CoreCompileInputs.cache
+C:\Users\cheng\Desktop\2020的web网站\model\obj\Debug\model.csproj.CopyComplete
+C:\Users\cheng\Desktop\2020的web网站\model\obj\Debug\model.dll
+C:\Users\cheng\Desktop\2020的web网站\model\obj\Debug\model.pdb
+C:\Users\cheng\Desktop\2020的web网站\model\obj\Debug\model.csprojAssemblyReference.cache

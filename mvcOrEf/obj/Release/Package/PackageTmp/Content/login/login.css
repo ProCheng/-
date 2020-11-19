@@ -1,0 +1,16 @@
+﻿.modal .modal-inner .modal-body .form .form-holder .form-holder-inner form input.submit-btn {
+    top: auto;
+    bottom: 0px;
+    font-size:25px;
+}
+
+.modal .modal-inner .modal-body .form {
+    padding: 10px 0 !important;
+}
+.login-zc {
+    transition:all 2s ease-in-out;
+    transform:rotateY(360deg) !important;
+    opacity:0;
+
+}
+
